@@ -1,19 +1,21 @@
 const mongoose = require("mongoose");
 const Patient = require("../model/Patient");
+const patientSchema = require("../utilities/validateSchema");
 
 const createNewPatient = async (req, res, next) => {
-  try {
-    const patient = new Patient({
-      patientName: req.body.patientName,
-      gender: req.body.gender,
-      phone: req.body.phone,
-      email: req.body.email,
-      occupation: req.body.occupation,
-      birthdate: req.body.birthdate,
-      address: req.body.address,
-      allergies: req.body.allergies,
-      isInsured: req.body.isInsured,
+  const { error, value } = patientSchema.validate(req.body, {
+    abortEarly: false,
+  });
+
+  if (error) {
+    res.status(400).json({
+      message: "Validation error",
+      details: error.details.map((e) => e.message),
     });
+    return;
+  }
+  try {
+    const patient = new Patient(value);
     const newPatient = await patient.save();
     res.status(201).json(newPatient);
   } catch (error) {
