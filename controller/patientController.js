@@ -1,6 +1,6 @@
-const mongoose = require("mongoose");
-const Patient = require("../model/Patient");
-const patientSchema = require("../utilities/validateSchema");
+const mongoose = require('mongoose');
+const Patient = require('../model/Patient');
+const patientSchema = require('../utilities/patientValidator');
 
 const createNewPatient = async (req, res, next) => {
   const { error, value } = patientSchema.validate(req.body, {
@@ -9,7 +9,7 @@ const createNewPatient = async (req, res, next) => {
 
   if (error) {
     res.status(400).json({
-      message: "Validation error",
+      message: 'Validation error',
       details: error.details.map((e) => e.message),
     });
     return;
@@ -28,35 +28,39 @@ const getAllPatients = async (req, res, next) => {
     const result = await Patient.find();
 
     if (!result) {
-      return res.send("Patients not found");
+      return res.send('Patients not found');
     }
 
-    res.setHeader("Content-Type", "application/json");
+    res.setHeader('Content-Type', 'application/json');
     res.status(200).json(result);
   } catch (error) {
     next(error);
   }
 };
 const getPatientById = async (req, res, next) => {
-  const patientId = req.params.id;
+  try {
+    const patientId = req.params.id;
 
-  if (!mongoose.Types.ObjectId.isValid(patientId)) {
-    return res.status(404).json("Invalid Id");
-  }
+    if (!mongoose.Types.ObjectId.isValid(patientId)) {
+      return res.status(404).json('Invalid Id');
+    }
 
-  const patient = await Patient.findById(patientId);
-  if (!patient) {
-    return res.status(404).json(`No patient with the ID ${patientId} found`);
+    const patient = await Patient.findById(patientId);
+    if (!patient) {
+      return res.status(404).json(`No patient with the ID ${patientId} found`);
+    }
+    res.setHeader('Content-Type', 'application/json');
+    res.status(200).json(patient);
+  } catch (error) {
+    next(error);
   }
-  res.setHeader("Content-Type", "application/json");
-  res.status(200).json(patient);
 };
 
 const updatePatient = async (req, res, next) => {
   try {
     const patientId = req.params.id;
     if (!mongoose.Types.ObjectId.isValid(patientId)) {
-      return res.status(404).json({ message: "Invalid Id use" });
+      return res.status(404).json({ message: 'Invalid Id use' });
     }
 
     const patientUpdate = await Patient.findByIdAndUpdate(
@@ -75,7 +79,7 @@ const updatePatient = async (req, res, next) => {
       { new: true, runValidators: true }
     );
     if (!patientUpdate) {
-      res.status(404).json({ message: "Patient is not found" });
+      res.status(404).json({ message: 'Patient is not found' });
     }
     res.status(200).json(patientUpdate);
   } catch (error) {
@@ -87,7 +91,7 @@ const deletePatient = async (req, res, next) => {
   try {
     const patientId = req.params.id;
     if (!mongoose.Types.ObjectId.isValid(patientId)) {
-      return res.status(400).json({ message: "Invalid id type" });
+      return res.status(400).json({ message: 'Invalid id type' });
     }
     const deleted = await Patient.findByIdAndDelete(patientId);
     if (!deleted) {

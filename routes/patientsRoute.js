@@ -1,11 +1,31 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const patientControl = require("../controller/patientController");
+const patientControl = require('../controller/patientController');
 
-router.get("/", patientControl.getAllPatients);
-router.get("/:id", patientControl.getPatientById);
-router.post("/", patientControl.createNewPatient);
-router.put("/:id", patientControl.updatePatient);
-router.delete("/:id", patientControl.deletePatient);
+router.get(
+  // #swagger.tags = ["Patients"]
+  '/',
+  patientControl.getAllPatients
+);
+router.get(
+  // #swagger.tags = ["Patients"]
+  '/:id',
+  patientControl.getPatientById
+);
+router.post(
+  // #swagger.tags = ["Patients"]
+  '/',
+  patientControl.createNewPatient
+);
+router.put(
+  // #swagger.tags = ["Patients"]
+  '/:id',
+  patientControl.updatePatient
+);
+router.delete(
+  // #swagger.tags = ["Patients"]
+  '/:id',
+  patientControl.deletePatient
+);
 
 module.exports = router;

@@ -1,8 +1,8 @@
-const Joi = require("joi");
+const Joi = require('joi');
 
 const patientSchema = Joi.object({
   patientName: Joi.string().min(4).max(50).required(),
-  gender: Joi.string().valid("Male", "Female").required(),
+  gender: Joi.string().valid('male', 'female').required(),
   phone: Joi.string()
     .pattern(/^[0-9]{7,15}$/)
     .required(),

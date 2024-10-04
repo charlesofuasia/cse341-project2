@@ -1,6 +1,14 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
 
-router.use("/patients", require("./patientsRoute"));
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('../swagger.json');
+
+router.use('/api-docs', swaggerUi.serve);
+router.get('/api-docs', swaggerUi.setup(swaggerDocument));
+
+router.use('/patients', require('./patientsRoute'));
+
+router.use('/employees', require('./employeesRoute'));
 
 module.exports = router;
