@@ -5,9 +5,9 @@
     "description": "Description",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "cse341-project2-yijv.onrender.com",
   "basePath": "/",
-  "schemes": ["http"],
+  "schemes": ["http", "https"],
   "paths": {
     "/api-docs": {
       "get": {
