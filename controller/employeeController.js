@@ -47,7 +47,7 @@ const getEmployeeById = async (req, res, next) => {
     const objectId = new mongoose.Types.ObjectId(empId);
     const employee = await Employee.find(objectId);
     if (!employee) {
-      res.status(404).json(`Enployee with id ${empId} not found.`);
+      return res.status(404).json(`Enployee with id ${empId} not found.`);
     }
     res.setHeader('Content-Type', 'application/json');
     res.status(200).json(employee);
