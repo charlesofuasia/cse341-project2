@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const patientSchema = mongoose.Schema(
   {
@@ -28,7 +28,7 @@ const patientSchema = mongoose.Schema(
       required: true,
     },
     allergies: {
-      type: Array,
+      type: [String],
       required: true,
     },
     isInsured: {
@@ -54,4 +54,4 @@ const patientSchema = mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model("Patient", patientSchema);
+module.exports = mongoose.model('Patient', patientSchema);
