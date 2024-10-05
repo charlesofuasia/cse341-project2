@@ -10,7 +10,6 @@ const patientSchema = Joi.object({
   occupation: Joi.string().max(50).optional(),
   birthdate: Joi.date().iso().required(),
   address: Joi.string().max(300).required(),
-  allergies: Joi.array().items(Joi.string()).required,
   isInsured: Joi.boolean().optional(),
 });
 

@@ -27,10 +27,6 @@ const patientSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    allergies: {
-      type: [String],
-      required: true,
-    },
     isInsured: {
       type: Boolean,
       default: false,

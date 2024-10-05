@@ -63,12 +63,6 @@
                 },
                 "address": {
                   "type": "string"
-                },
-                "allergies": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
                 }
               }
             }
@@ -145,12 +139,6 @@
                 },
                 "address": {
                   "type": "string"
-                },
-                "allergies": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
                 }
               }
             }
