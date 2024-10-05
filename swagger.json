@@ -227,7 +227,9 @@
                 "phoneExtension": {
                   "type": "string"
                 },
-                "employeeId": "string"
+                "employeeId": {
+                  "type": "string"
+                }
               }
             }
           }
