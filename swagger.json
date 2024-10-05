@@ -65,7 +65,7 @@
                   "type": "string"
                 },
                 "allergies": {
-                  "type": "string"
+                  "type": "array"
                 },
                 "isInsured": {
                   "type": "boolean"
@@ -147,7 +147,7 @@
                   "type": "string"
                 },
                 "allergies": {
-                  "type": "string"
+                  "type": "array"
                 },
                 "isInsured": {
                   "type": "boolean"
@@ -226,7 +226,8 @@
                 },
                 "phoneExtension": {
                   "type": "string"
-                }
+                },
+                "employeeId": "string"
               }
             }
           }
