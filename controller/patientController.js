@@ -60,7 +60,7 @@ const updatePatient = async (req, res, next) => {
   try {
     const patientId = req.params.id;
     if (!mongoose.Types.ObjectId.isValid(patientId)) {
-      return res.status(404).json({ message: 'Invalid Id use' });
+      return res.status(400).json({ message: 'Invalid Id use' });
     }
 
     const patientUpdate = await Patient.findByIdAndUpdate(
