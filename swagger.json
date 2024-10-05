@@ -65,10 +65,10 @@
                   "type": "string"
                 },
                 "allergies": {
-                  "type": "array"
-                },
-                "isInsured": {
-                  "type": "boolean"
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
                 }
               }
             }
@@ -147,10 +147,10 @@
                   "type": "string"
                 },
                 "allergies": {
-                  "type": "array"
-                },
-                "isInsured": {
-                  "type": "boolean"
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
                 }
               }
             }
