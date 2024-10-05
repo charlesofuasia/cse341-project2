@@ -45,7 +45,7 @@ const getEmployeeById = async (req, res, next) => {
         .json({ message: `${empId} is not a valid id type` });
     }
     const objectId = new mongoose.Types.ObjectId(empId);
-    const employee = await Employee.find(objectId);
+    const employee = await Employee.findById(objectId);
     if (!employee) {
       return res.status(404).json(`Enployee with id ${empId} not found.`);
     }
