@@ -80,7 +80,7 @@ const updateEmployee = async (req, res, next) => {
       return res.status(404).json({ message: 'Employee not found' });
     }
 
-    const updated = await Employee.findByIdAndUpdate(empId, value, {
+    const updated = await Employee.findByIdAndUpdate(objectId, value, {
       new: true,
     });
     res.status(200).json(updated);

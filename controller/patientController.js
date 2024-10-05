@@ -63,24 +63,22 @@ const updatePatient = async (req, res, next) => {
       return res.status(400).json({ message: 'Invalid Id use' });
     }
 
-    const patientUpdate = await Patient.findByIdAndUpdate(
-      patientId,
-      {
-        patientName: req.body.patientName,
-        gender: req.body.gender,
-        phone: req.body.phone,
-        email: req.body.email,
-        occupation: req.body.occupation,
-        birthdate: req.body.birthdate,
-        address: req.body.address,
-        allergies: req.body.allergies,
-        isInsured: req.body.isInsured,
-      },
-      { new: true, runValidators: true }
-    );
-    if (!patientUpdate) {
-      res.status(404).json({ message: 'Patient is not found' });
+    const { error, value } = patientSchema.validate(req.body, {
+      abortEarly: false,
+    });
+    if (error) {
+      return res.status(400).json({
+        message: 'Validation error',
+        details: error.details.map((err) => err.message),
+      });
     }
+    const objectId = new mongoose.Types.ObjectId(patientId);
+    const existingPatient = await Patient.findById(objectId);
+    if (!existingPatient) {
+      return res.status(404).json({ message: 'Patient not found' });
+    }
+
+    const patientUpdate = await Patient.findByIdAndUpdate(objectId, value);
     res.status(200).json(patientUpdate);
   } catch (error) {
     next(error);
