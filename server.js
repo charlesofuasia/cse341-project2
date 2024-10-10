@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const passport = require('passport');
 const cors = require('cors');
+const Mongostore = require('connect-mongo')(session);
 const GithubStrategy = require('passport-github2').Strategy;
 const port = process.env.PORT || 3000;
 
@@ -18,6 +19,10 @@ app.use(
     secret: 'secret',
     resave: false,
     saveUninitialized: false,
+    store: new Mongostore({
+      mongooseConnection: mongoose.connection,
+      ttl: 2 * 60 * 60,
+    }),
   })
 );
 app.use(passport.initialize());
