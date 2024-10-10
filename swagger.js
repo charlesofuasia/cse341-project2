@@ -1,5 +1,3 @@
-//const { type } = require('./utilities/patientValidator');
-
 const swaggerAutogen = require('swagger-autogen')();
 
 const doc = {
