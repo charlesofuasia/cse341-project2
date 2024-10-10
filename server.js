@@ -20,7 +20,7 @@ app.use(
     resave: false,
     saveUninitialized: false,
     store: Mongostore.create({
-      mongoUrl: mongoose.process.env.DATABASE_URI,
+      mongoUrl: process.env.DATABASE_URI,
       ttl: 2 * 60 * 60,
     }),
   })
