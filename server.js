@@ -21,7 +21,7 @@ app.use(
     saveUninitialized: false,
     store: Mongostore.create({
       mongoUrl: process.env.DATABASE_URI,
-      ttl: 2 * 60 * 60,
+      ttl: 60 * 60,
     }),
   })
 );
