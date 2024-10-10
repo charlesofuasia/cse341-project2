@@ -1,4 +1,4 @@
-const { type } = require('./utilities/patientValidator');
+//const { type } = require('./utilities/patientValidator');
 
 const swaggerAutogen = require('swagger-autogen')();
 
