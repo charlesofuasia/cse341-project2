@@ -11,8 +11,7 @@ const doc = {
     github_oauth: {
       type: 'oauth2',
       authorizationUrl: 'https://github.com/login/oauth/authorize',
-      tokenUrl: 'https://github.com/login/oauth/access_token',
-      flow: 'accessCode',
+      flow: 'implicit',
       client_id: process.env.GITHUB_CLIENT_ID,
       scopes: {
         'read:user': 'Read user information',
