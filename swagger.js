@@ -10,9 +10,8 @@ const doc = {
   securityDefinitions: {
     github_oauth: {
       type: 'oauth2',
-      authorizationUrl: 'https://github.com/login/oauth/authorize',
+      authorizationUrl: '/login',
       flow: 'implicit',
-      client_id: process.env.GITHUB_CLIENT_ID,
       scopes: {
         'read:user': 'Read user information',
         repo: 'Access repositories',

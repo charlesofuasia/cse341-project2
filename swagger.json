@@ -11,9 +11,8 @@
   "securityDefinitions": {
     "github_oauth": {
       "type": "oauth2",
-      "authorizationUrl": "https://github.com/login/oauth/authorize",
+      "authorizationUrl": "/login",
       "flow": "implicit",
-      "client_id": "Ov23licImtdt3oUbqUJb",
       "scopes": {
         "read:user": "Read user information",
         "repo": "Access repositories"
