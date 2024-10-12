@@ -13,7 +13,7 @@
       "type": "oauth2",
       "authorizationUrl": "https://github.com/login/oauth/authorize",
       "flow": "implicit",
-      "client_id": "process.env.GITHUB_CLIENT_ID",
+      "client_id": "Ov23licImtdt3oUbqUJb",
       "scopes": {
         "read:user": "Read user information",
         "repo": "Access repositories"
@@ -43,10 +43,11 @@
     },
     "/login": {
       "get": {
-        "description": "",
+        "tags": ["Authentication"],
+        "description": "Redirects to Github Oauth",
         "responses": {
-          "default": {
-            "description": ""
+          "302": {
+            "description": "Redirects to Github Oauth"
           }
         }
       }
